@@ -8,8 +8,8 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: MONGODB_URI
-        fromEnvVar: MONGODB_URI
+      - key: MONGO_URL
+        fromEnvVar: MONGO_URL
       - key: JWT_SECRET
         fromEnvVar: JWT_SECRET
       - key: APOLLO_KEY
