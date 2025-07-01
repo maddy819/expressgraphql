@@ -9,6 +9,14 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGODB_URI
-        value: your-mongodb-uri
+        fromEnvVar: MONGODB_URI
       - key: JWT_SECRET
-        value: your-secret
+        fromEnvVar: JWT_SECRET
+      - key: APOLLO_KEY
+        fromEnvVar: APOLLO_KEY
+      - key: APOLLO_GRAPH_REF
+        fromEnvVar: APOLLO_GRAPH_REF
+      - key: APOLLO_SCHEMA_REPORTING
+        fromEnvVar: APOLLO_SCHEMA_REPORTING
+      - key: PORT
+        fromEnvVar: PORT
