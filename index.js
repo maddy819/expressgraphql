@@ -14,7 +14,6 @@ await connectDB();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  plugins: [],
   introspection: true,
   csrfPrevention: true,
   context,

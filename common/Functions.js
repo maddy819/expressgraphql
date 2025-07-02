@@ -6,6 +6,7 @@ export const getProjections = (info) => {
 };
 
 export const CheckAuthorization = (employeeId) => {
+  //console.log("employeeId" + employeeId);
   if (!employeeId) {
     throw new Error("Unauthorized");
   }

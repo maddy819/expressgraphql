@@ -11,15 +11,29 @@ const getTokenFromHeader = (req) => {
   return null;
 };
 
+const getOperationName = (req) => {
+  // Handle different GraphQL request formats
+  if (req.body?.operationName) {
+    return req.body.operationName;
+  }
+
+  if (req.body?.query) {
+    // Parse operation name from query (fallback)
+    const match = req.body.query.match(/^(query|mutation)\s+(\w+)/);
+    return match?.[2] || null;
+  }
+
+  return null;
+};
+
 const context = ({ req }) => {
   // List of context-free operations (case-sensitive)
   const contextFreeOps = config.CONTEXT_FREE_OPS;
-  const body = req.body;
-  const operationName = body.operationName;
+  const operationName = getOperationName(req);
 
-  console.log("endpoints: " + body.operationName);
+  console.log("endpoints: " + operationName);
 
-  if (contextFreeOps.includes(operationName)) {
+  if (operationName && contextFreeOps.includes(operationName)) {
     return {}; // skip auth/context for public operations
   }
 
