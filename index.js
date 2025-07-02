@@ -17,7 +17,7 @@ const server = new ApolloServer({
   plugins: [],
   introspection: true,
   csrfPrevention: true,
-  context,
+  //context,
 });
 await server.start();
 server.applyMiddleware({ app });
