@@ -4,7 +4,7 @@ import config from "../config/config.js";
 const getTokenFromHeader = (req) => {
   const authHeader = req?.headers?.authorization;
 
-  console.log(authHeader);
+  console.log("header: " + authHeader);
 
   if (authHeader.startsWith("Bearer ")) {
     return authHeader.split(" ")[1]; // ✅ return the token after 'Bearer'
