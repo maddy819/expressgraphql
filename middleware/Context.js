@@ -4,6 +4,8 @@ import config from "../config/config.js";
 const getTokenFromHeader = (req) => {
   const authHeader = req?.headers?.authorization;
 
+  console.log(authHeader);
+
   if (authHeader.startsWith("Bearer ")) {
     return authHeader.split(" ")[1]; // ✅ return the token after 'Bearer'
   }
@@ -16,8 +18,6 @@ const context = ({ req }) => {
   const contextFreeOps = config.CONTEXT_FREE_OPS;
   const body = req.body;
   const operationName = body.operationName;
-
-  console.log(operationName);
 
   if (contextFreeOps.includes(operationName)) {
     return {}; // skip auth/context for public operations
