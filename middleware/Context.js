@@ -17,7 +17,7 @@ const context = ({ req }) => {
   const body = req.body;
   const operationName = body.operationName;
 
-  console.log("endpoints: " + contextFreeOps);
+  console.log("endpoints: " + body);
 
   if (contextFreeOps.includes(operationName)) {
     return {}; // skip auth/context for public operations
